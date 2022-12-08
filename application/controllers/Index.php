@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Index extends CI_Controller
+class Index extends BaseController
 {
 
     public function __construct()
@@ -9,13 +9,16 @@ class Index extends CI_Controller
         parent::__construct();
         $this->load->model('M_pmb', 'm_pmb');
     }
+
     public function index()
     {
-        $this->load->view('index/index');
+        $data['title'] = 'Dashboard';
+        $this->render('index/index', $data);
     }
 
-    public function pendaftar()
+    public function pendaftarprodi1()
     {
+        $data['title'] = 'Grafik Berdasarkan Prodi 1';
         $prodi = $this->m_pmb->listProdi();
         foreach ($prodi as $key => $p) {
             $prodi[$key]['jumlah'] = $this->m_pmb->jumlahPendaftarProdi1($p['id_prodi']);
@@ -40,6 +43,21 @@ class Index extends CI_Controller
             ];
         }
 
+        $data['pendaftar'] = $prodi;
+        $data['grafik1'] = json_encode($result);
+        $this->render('index/grafik_satu', $data);
+    }
+
+    public function pendaftarprodi2()
+    {
+        $data['title'] = 'Grafik Berdasarkan Prodi 2';
+        $prodi = $this->m_pmb->listProdi();
+        foreach ($prodi as $key => $p) {
+            $prodi[$key]['jumlah'] = $this->m_pmb->jumlahPendaftarProdi1($p['id_prodi']);
+            $prodi[$key]['jumlah2'] = $this->m_pmb->jumlahPendaftarProdi2($p['id_prodi']);
+            $prodi[$key]['size'] = rand(10, 30);
+        }
+
         //grafik kedua
         $hasil = null;
         foreach ($prodi as $p => $prod) {
@@ -53,8 +71,7 @@ class Index extends CI_Controller
         }
 
         $data['pendaftar'] = $prodi;
-        $data['grafik1'] = json_encode($result);
         $data['grafik2'] = json_encode($hasil);
-        $this->load->view('index/pendaftar', $data);
+        $this->render('index/grafik_dua', $data);
     }
 }
