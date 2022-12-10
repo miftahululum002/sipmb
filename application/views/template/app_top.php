@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Miftahul Ulum">
+    <link rel="icon" type="image/x-icon" href="<?= base_url('public/icon.png') ?>">
     <title><?= APP_NAME . ' &mdash; By:' . AUTHOR_NAME  ?></title>
     <link href="<?= base_url('public') ?>/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url('public') ?>/lib/highchart/code/css/highcharts.css" rel="stylesheet">
@@ -87,23 +88,47 @@
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3 sidebar-sticky">
-                    <ul class="nav flex-column">
+                    <ul class="nav flex-column mt-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<?= site_url('index') ?>">
+                            <a class="nav-link <?= activeMenu('index', 'active') ?>" aria-current="page" href="<?= site_url('index') ?>">
                                 <span data-feather="home" class="align-text-bottom"></span>
                                 Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= site_url('index/pendaftarprodi1') ?>">
-                                <span data-feather="file" class="align-text-bottom"></span>
-                                Pendaftar Berdasarkan Prodi 1
+                            <a class="nav-link <?= activeMenu('index/pendaftarprodi1', 'active') ?>" href="<?= site_url('index/pendaftarprodi1') ?>">
+                                <span data-feather="list" class="align-text-bottom"></span>
+                                Grafik Pendaftar Prodi 1
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= site_url('index/pendaftarprodi2') ?>">
+                            <a class="nav-link <?= activeMenu('index/pendaftarprodi2', 'active') ?>" href="<?= site_url('index/pendaftarprodi2') ?>">
+                                <span data-feather="menu" class="align-text-bottom"></span>
+                                Grafik Pendaftar Prodi 2
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?= activeMenu('index/pendaftarprestasi', 'active') ?>" href="<?= site_url('index/pendaftarprestasi') ?>">
+                                <span data-feather="inbox" class="align-text-bottom"></span>
+                                Grafik Pendaftar Prestasi
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?= activeMenu('index/pendaftarjalur', 'active') ?>" href="<?= site_url('index/pendaftarjalur') ?>">
+                                <span data-feather="align-center" class="align-text-bottom"></span>
+                                Grafik Pendaftar Jalur Masuk
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?= activeMenu('index/grafikpendapatan', 'active') ?>" href="<?= site_url('index/grafikpendapatan') ?>">
+                                <span data-feather="list" class="align-text-bottom"></span>
+                                Grafik Pendapatan
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?= activeMenu('index/pendaftarbank', 'active') ?>" href="<?= site_url('index/pendaftarbank') ?>">
                                 <span data-feather="file" class="align-text-bottom"></span>
-                                Pendaftar Berdasarkan Prodi 2
+                                Grafik Pendaftar Berdasarkan Bank
                             </a>
                         </li>
                     </ul>
